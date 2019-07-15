@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {Component, OnInit} from '@angular/core';
 import {ProduktServService} from '../service/produkt-serv.service';
 
 @Component({
@@ -40,5 +39,6 @@ this.Pages=new Array<number>(this.Totalpages);
     this.onGetproducts();
 
   }
+
 }
 

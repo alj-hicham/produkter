@@ -3,16 +3,14 @@
     <div class="panel-heading"> produkt list
     </div>
     <div class="panel-body">
-      <button (click)="onGetproducts()" class="btn btn-primary">
-        Produkt
-      </button>
-      <form #f="ngForm" (ngSubmit)="onSearchProdukt(f.value)">
+
+      <form #f="ngForm" (ngSubmit)="searchproduct(f.value)">
         <div class="form-group">
           <label>
-            Ord
-          </label>
-          <input name="keyword" ngModel="" type="text"/>
-          <button class="btn btn-primary" type="submit">söker</button>
+            Ord : </label>
+          <input type="text" name="keyword" ngModel >
+          <button class="btn btn-primary" type="submit">
+            <span class="glyphicon glyphicon-search"></span>söker</button>
         </div>
       </form>
 
@@ -28,6 +26,7 @@
         <td>{{p.designation}}</td>
         <td>{{p.price}}</td>
         <td>{{p.quantite}}</td>
+        <td><a class="btn btn-danger" (click)="onDeleteproduct(p)">radera</a></td>
 
 
 

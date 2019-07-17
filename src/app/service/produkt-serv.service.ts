@@ -17,4 +17,8 @@ public getProdukt(page:number,size:number){
     // http://localhost:8080/produits/search/byDesignationPage?mc=pc&page=0&size=1
     return this.httpclient.get(this.serverlink + '/produits/search/byDesignationPage?mc=' + keyword + '&page=' + page + '&size=' + size);
   }
+
+  public deleteProdukt(url){
+    return this.httpclient.delete(url);
+  }
 }

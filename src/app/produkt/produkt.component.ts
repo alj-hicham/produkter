@@ -12,7 +12,7 @@ public size:number=5;
 public page:number=0;
 public Totalpages:number;
 public Pages:Array<number>;
-  private currentkeyword: string = '';
+  private currentkeyword: string = "";
   constructor(private Serviceprod:ProduktServService) {
 
   }
@@ -37,21 +37,22 @@ this.Pages=new Array<number>(this.Totalpages);
 
   onPageProduct(i){
     this.page=i;
-    this.onSearchProdukt({keyword: this.currentkeyword});
+this.onSearchProdukt();
 
   }
 
-  searchproduct() {
-    this.currentkeyword = form.keyword;
+  searchproduct(form:any) {
+    this.page=0;
+    this.currentkeyword=form.keyword;
     this.onSearchProdukt();
   }
 
   onSearchProdukt() {
 
-    this.Serviceprod.searchProdukt(this.keyword, this.page, this.size).subscribe(
-      data => {
+    this.Serviceprod.searchProdukt(this.currentkeyword, this.page, this.size).
+    subscribe(data => {
 
-        this.Totalpages = data['page'].totalPages;
+        this.Totalpages = data["page"].totalPages;
         this.Pages = new Array<number>(this.Totalpages);
         this.produkt = data;
 
@@ -60,6 +61,17 @@ this.Pages=new Array<number>(this.Totalpages);
         console.error(error1);
       });
 
+  }
+
+  onDeleteproduct(p) {
+
+ let conf=confirm("är du säker att radera ?");
+ if(conf)
+   this.Serviceprod.deleteProdukt(p._links.self.href).subscribe(data=>{
+     this.onSearchProdukt();
+   },error1 => { console.log(p);});
+
+    
   }
 }
 

@@ -6,12 +6,13 @@
       <button (click)="onGetproducts()" class="btn btn-primary">
         Produkt
       </button>
-      <form #f (ngSubmit)="onSearchProdukt(f.value)">
+      <form #f="ngForm" (ngSubmit)="onSearchProdukt(f.value)">
         <div class="form-group">
           <label>
             Ord
           </label>
           <input name="keyword" ngModel="" type="text"/>
+          <button class="btn btn-primary" type="submit">söker</button>
         </div>
       </form>
 
